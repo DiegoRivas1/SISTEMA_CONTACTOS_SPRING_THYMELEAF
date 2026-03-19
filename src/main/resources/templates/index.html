@@ -1,17 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Sistema de Contactos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script th:src="@{/js/navbar.js}" defer></script>
+    <title>Sistema de Contactos | Cyberpunk Edition</title>
 </head>
 <body>
-    <div class="container">
-        <div class="container text-center">
-            <h3>Sistema de Contactos</h3>
+<!-- NAVBAR CYBERPUNK -->
+<div class="container">
+    <nav class="navbar sticky-top d-flex justify-content-start align-items-center">
+        <button class="btn" type="button">
+            <a href="/">
+                <i class="fas fa-cube me-2"></i>
+                <span>// SISTEMA-CONTACTOS</span>
+            </a>
+        </button>
+        <button class="btn" type="button">
+            <a href="/">
+                <i class="fas fa-terminal me-1"></i>
+                [INICIO]
+            </a>
+        </button>
+        <button class="btn" type="button">
+            <a href="/agregar">
+                <i class="fas fa-user-plus me-1"></i>
+                [AGREGAR]
+            </a>
+        </button>
+    </nav>
+</div>
+
+<!-- CONTENIDO PRINCIPAL CYBERPUNK -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="cyber-title" data-text="SISTEMA DE CONTACTOS">
+                SISTEMA DE CONTACTOS
+            </h3>
+
+            <!-- Tarjetas cyberpunk -->
+            <div class="row mt-5 justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card cyber-card">
+                        <div class="card-body">
+                            <i class="fas fa-users fa-3x mb-3"></i>
+                            <h5 class="text-white">// GESTIONAR</h5>
+                            <p class="text-white-50">Accede a tu base de contactos</p>
+                            <div class="cyber-stats">
+                                <span class="badge bg-dark text-cyber-green">42 CONTACTOS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card cyber-card">
+                        <div class="card-body">
+                            <i class="fas fa-chart-line fa-3x mb-3"></i>
+                            <h5 class="text-white">// ESTADÍSTICAS</h5>
+                            <p class="text-white-50">Analiza tus conexiones</p>
+                            <div class="cyber-stats">
+                                <span class="badge bg-dark text-cyber-blue">ACTIVO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<!-- FOOTER CYBERPUNK (OPCIONAL) -->
+<footer class="container mt-5">
+    <div class="text-center text-white-50 small">
+        <span class="cyber-footer">© 2025 // SISTEMA DE CONTACTOS v1.0 [CYBERPUNK EDITION]</span>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

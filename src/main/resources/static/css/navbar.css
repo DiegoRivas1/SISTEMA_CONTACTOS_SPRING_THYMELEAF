@@ -1,0 +1,292 @@
+/* Variables y estilos cyberpunk */
+:root {
+    --cyber-green: #00ff9f;
+    --cyber-blue: #00b8ff;
+    --cyber-darkblue: #001eff;
+    --cyber-purple: #bd00ff;
+    --cyber-magenta: #d600ff;
+    --cyber-black: #0a0a0f;
+    --cyber-gray: #1a1a2a;
+    --cyber-glow-green: 0 0 10px #00ff9f, 0 0 20px #00ff9f, 0 0 30px #00ff9f;
+    --cyber-glow-blue: 0 0 10px #00b8ff, 0 0 20px #00b8ff, 0 0 30px #00b8ff;
+    --cyber-glow-purple: 0 0 10px #bd00ff, 0 0 20px #bd00ff, 0 0 30px #bd00ff;
+}
+
+/* Fondo con grid cyberpunk */
+body {
+    background: linear-gradient(135deg, var(--cyber-black) 0%, var(--cyber-gray) 100%);
+    position: relative;
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Courier New', monospace;
+}
+
+/* Efecto de grid digital */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+            linear-gradient(var(--cyber-blue) 1px, transparent 1px),
+            linear-gradient(90deg, var(--cyber-blue) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+    animation: gridShift 20s linear infinite;
+}
+
+@keyframes gridShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+/* Navbar cyberpunk */
+.navbar {
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid;
+    border-image: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue), var(--cyber-purple), var(--cyber-magenta)) 1;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 159, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(189, 0, 255, 0.5); }
+}
+
+/* Efecto de líneas láser */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(0, 255, 159, 0.1) 50%,
+            transparent 70%
+    );
+    animation: laserSweep 3s linear infinite;
+}
+
+@keyframes laserSweep {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Botones cyberpunk */
+.navbar .btn {
+    margin-right: 0.7rem;
+    border-radius: 5px;
+    border: 1px solid;
+    border-image: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue)) 1;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.navbar .btn a {
+    text-decoration: none;
+    color: var(--cyber-green);
+    padding: 10px 25px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px var(--cyber-green);
+}
+
+/* Efecto hover con glitch */
+.navbar .btn:hover {
+    transform: scale(1.05);
+    border-image: linear-gradient(45deg, var(--cyber-purple), var(--cyber-magenta)) 1;
+    /*animation: glitch 0.3s ease-in-out infinite;*/ /*causa temblores*/
+    background: rgba(189, 0, 255, 0.2);
+}
+
+/*
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+*/
+
+.navbar .btn:hover a {
+    color: var(--cyber-magenta);
+    text-shadow:
+            0 0 10px var(--cyber-magenta),
+            0 0 20px var(--cyber-purple),
+            0 0 30px var(--cyber-blue);
+    animation: textFlicker 1.5s ease-in-out infinite;
+}
+
+@keyframes textFlicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.3; }
+    94% { opacity: 1; }
+    96% { opacity: 0.5; }
+    98% { opacity: 1; }
+}
+
+/* Botón especial Sistema de Contactos */
+.navbar .btn:first-child {
+    background: linear-gradient(45deg,
+    rgba(0, 255, 159, 0.2),
+    rgba(189, 0, 255, 0.2)
+    );
+    border-image: linear-gradient(45deg,
+    var(--cyber-green),
+    var(--cyber-purple),
+    var(--cyber-magenta)
+    ) 1;
+}
+
+.navbar .btn:first-child a {
+    color: white;
+    text-shadow:
+            0 0 10px var(--cyber-green),
+            0 0 20px var(--cyber-purple);
+}
+
+/* Título cyberpunk */
+h3 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 20px 40px;
+    background: linear-gradient(45deg,
+    rgba(0, 255, 159, 0.1),
+    rgba(189, 0, 255, 0.1)
+    );
+    border: 2px solid;
+    border-image: linear-gradient(45deg,
+    var(--cyber-green),
+    var(--cyber-blue),
+    var(--cyber-purple),
+    var(--cyber-magenta)
+    ) 1;
+    box-shadow: 0 0 30px rgba(0, 255, 159, 0.3);
+    animation: titleGlitch 5s infinite;
+}
+
+@keyframes titleGlitch {
+    0%, 100% { transform: skew(0deg); }
+    95% { transform: skew(0deg); }
+    96% { transform: skew(5deg); }
+    97% { transform: skew(-5deg); }
+    98% { transform: skew(3deg); }
+    99% { transform: skew(-3deg); }
+}
+
+
+
+
+/* Tarjetas con estilo cyberpunk */
+.card {
+    background: rgba(26, 26, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid;
+    border-image: linear-gradient(45deg,
+    var(--cyber-green),
+    var(--cyber-purple)
+    ) 1;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            45deg,
+            transparent,
+            rgba(0, 255, 159, 0.1),
+            transparent
+    );
+    transform: rotate(45deg);
+    animation: cardShine 3s infinite;
+}
+
+@keyframes cardShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+            0 10px 30px rgba(0, 255, 159, 0.3),
+            0 0 0 2px rgba(189, 0, 255, 0.5);
+}
+
+.card i {
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Efecto de neón para íconos */
+.card i.fa-users { color: var(--cyber-green); }
+.card i.fa-address-card { color: var(--cyber-blue); }
+.card i.fa-user-plus { color: var(--cyber-purple); }
+
+/* Responsive cyberpunk */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 2rem;
+        padding: 15px 25px;
+    }
+
+    h3::before,
+    h3::after {
+        top: 15px;
+        left: 25px;
+    }
+}
+
+/* Scrollbar cyberpunk */
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--cyber-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg,
+    var(--cyber-green),
+    var(--cyber-purple)
+    );
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg,
+    var(--cyber-purple),
+    var(--cyber-magenta)
+    );
+}
