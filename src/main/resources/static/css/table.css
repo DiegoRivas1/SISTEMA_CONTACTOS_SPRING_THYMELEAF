@@ -1,0 +1,218 @@
+/* Estilos cyberpunk para tablas - VERSIÓN CORREGIDA */
+
+:root {
+    --cyber-green: #00ff9f;
+    --cyber-blue: #00b8ff;
+    --cyber-darkblue: #001eff;
+    --cyber-purple: #bd00ff;
+    --cyber-magenta: #d600ff;
+    --cyber-black: #0a0a0f;
+    --cyber-gray: #1a1a2a;
+}
+
+/* Contenedor de la tabla */
+.cyber-table-container {
+    position: relative;
+    overflow-x: auto;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+/* Tabla principal */
+.cyber-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    background: transparent !important;
+    margin: 0;
+}
+
+/* Cabecera de la tabla */
+.cyber-table thead tr {
+    background: linear-gradient(45deg,
+    rgba(0, 255, 159, 0.2),
+    rgba(189, 0, 255, 0.2)
+    );
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg,
+    var(--cyber-green),
+    var(--cyber-purple)
+    ) 1;
+}
+
+.cyber-table thead th {
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cyber-green);
+    text-shadow: 0 0 10px var(--cyber-green);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    text-align: left !important; /* Forzar alineación izquierda */
+    background: transparent !important;
+}
+
+/* Efecto de escaneo en cabecera */
+.cyber-table thead th::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+    );
+    animation: headerScan 3s infinite;
+}
+
+@keyframes headerScan {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* Filas del cuerpo */
+.cyber-table tbody tr {
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    border-image: linear-gradient(45deg,
+    var(--cyber-blue),
+    var(--cyber-purple)
+    ) 1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de líneas láser en hover */
+.cyber-table tbody td::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,255,159,0.15),
+            transparent
+    );
+    transition: left 0.4s;
+}
+
+.cyber-table tbody td {
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-table tbody tr:hover::before {
+    left: 100%;
+}
+
+.cyber-table tbody tr:hover {
+    background: rgba(26, 26, 42, 0.9);
+    transform: scale(1.01);
+    box-shadow: 0 0 20px rgba(0, 255, 159, 0.2);
+}
+
+/* Celdas del cuerpo */
+.cyber-table tbody td {
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 0.95rem;
+    border: none;
+    position: relative;
+    text-align: left !important; /* Forzar alineación izquierda */
+    background: transparent !important;
+    vertical-align: middle;
+}
+
+/* Filas alternadas */
+.cyber-table tbody tr:nth-child(even) {
+    background: rgba(10, 10, 15, 0.5);
+}
+
+/* Colores para diferentes columnas */
+.cyber-table tbody td:first-child {
+    color: var(--cyber-green);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--cyber-green);
+}
+
+.cyber-table tbody td:nth-child(2) {
+    color: #fff;
+}
+
+.cyber-table tbody td:nth-child(3) {
+    color: var(--cyber-blue);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.cyber-table tbody td:nth-child(4) {
+    color: var(--cyber-purple);
+    font-style: italic;
+}
+
+/* Badges de estado */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    text-align: center;
+    min-width: 80px;
+}
+
+.status-active {
+    background: rgba(0, 255, 159, 0.2);
+    border-image: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue)) 1;
+    color: var(--cyber-green);
+}
+
+.status-inactive {
+    background: rgba(214, 0, 255, 0.2);
+    border-image: linear-gradient(45deg, var(--cyber-magenta), var(--cyber-purple)) 1;
+    color: var(--cyber-magenta);
+}
+
+/* Info adicional */
+.text-cyber-green {
+    color: var(--cyber-green) !important;
+}
+
+/* Efecto neón al pasar por celdas */
+.cyber-table tbody td:hover {
+    text-shadow: 0 0 10px currentColor;
+    transition: text-shadow 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cyber-table thead th,
+    .cyber-table tbody td {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .status-badge {
+        min-width: 60px;
+        padding: 3px 6px;
+        font-size: 0.7rem;
+    }
+}
+
