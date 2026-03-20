@@ -63,30 +63,29 @@
                                             <th scope="col">CELULAR</th>
                                             <th scope="col">EMAIL</th>
                                             <th scope="col">ESTADO</th>
+                                            <th scope="col">PAIS</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr th:each="contacto : ${contactos}">
+                                            <td th:text="${contacto.idContacto}"></td>
+                                            <td th:text="${contacto.nombre}"></td>
+                                            <td th:text="${contacto.celular}"></td>
+                                            <td th:text="${contacto.email}"></td>
+                                            <td>
+                                                <span th:if="${contacto.estado}" class="status-badge status-active">Activo</span>
+                                                <span th:unless="${contacto.estado}" class="status-badge status-inactive">Inactivo</span>
+                                            </td>
+                                            <td th:text="${contacto.pais}"></td>
+                                        </tr>
+                                        <!-- <tr>
                                             <td>001</td>
                                             <td>JOHN DOE</td>
                                             <td>+51 123 456 789</td>
                                             <td>john.doe@cyber.com</td>
                                             <td><span class="status-badge status-active">ACTIVO</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>002</td>
-                                            <td>JANE SMITH</td>
-                                            <td>+51 987 654 321</td>
-                                            <td>jane.smith@cyber.com</td>
-                                            <td><span class="status-badge status-active">ACTIVO</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>003</td>
-                                            <td>BOB JOHNSON</td>
-                                            <td>+51 555 123 456</td>
-                                            <td>bob.j@cyber.com</td>
-                                            <td><span class="status-badge status-inactive">INACTIVO</span></td>
-                                        </tr>
+                                        </tr> -->
+
                                     </tbody>
                                 </table>
                             </div>

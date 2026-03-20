@@ -21,4 +21,10 @@ public class Contacto {
     String nombre;
     String celular;
     String email;
+    boolean estado;
+    String pais;
+
+    String getTelefonoCompleto(){
+        return pais;
+    }
 }
