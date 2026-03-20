@@ -70,13 +70,25 @@
                                         <tr th:each="contacto : ${contactos}">
                                             <td th:text="${contacto.idContacto}"></td>
                                             <td th:text="${contacto.nombre}"></td>
-                                            <td th:text="${contacto.celular}"></td>
+                                            <td th:text="${contacto.celularCompleto}"></td>
                                             <td th:text="${contacto.email}"></td>
-                                            <td>
+                                            <!--
+                                             <td>
                                                 <span th:if="${contacto.estado}" class="status-badge status-active">Activo</span>
                                                 <span th:unless="${contacto.estado}" class="status-badge status-inactive">Inactivo</span>
                                             </td>
-                                            <td th:text="${contacto.pais}"></td>
+                                             -->
+
+                                            <!--
+                                             <td th:text="${contacto.estaActivo}"></td>
+                                             -->
+                                            <td>
+                                                <span class="status-badge"
+                                                      th:classappend="${contacto.estado} ? 'status-active' : 'status-inactive'"
+                                                      th:text="${contacto.estadoTexto}">
+                                                </span>
+                                            </td>
+                                            <td th:text="${contacto.pais.nombrePais}"></td>
                                         </tr>
                                         <!-- <tr>
                                             <td>001</td>
