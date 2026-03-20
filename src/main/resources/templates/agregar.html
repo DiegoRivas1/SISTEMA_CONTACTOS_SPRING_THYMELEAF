@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/cabecero::cabecero-seccion(titulo='Sistema de Contactos | Agregar Contacto')}">
+</head>
+<body>
+
+<!-- NAVBAR CYBERPUNK -->
+<div th:replace="~{fragmentos/navegacion::navegacion-seccion}"/>
+
+<div class="container py-4">
+    <div class="container text-center mb-4">
+        <h3 class="neon-text">✦ AGREGAR NUEVO CONTACTO ✦</h3>
+        <p class="text-muted">Ingresa los datos del nuevo contacto</p>
+    </div>
+
+    <!-- FORMULARIO CYBERPUNK -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card cyber-card">
+                <div class="card-body p-4">
+                    <form th:action="@{/agregar}" th:object="${contacto}" method="post">
+
+                        <!-- Campo Nombre -->
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label cyber-label">NOMBRE</label>
+                            <input type="text"
+                                   class="form-control cyber-input"
+                                   id="nombre"
+                                   th:field="*{nombre}"
+                                   placeholder="Ej: Diego Martinez"
+                                   required>
+                            <div class="form-text text-muted">Ingresa el nombre completo</div>
+                        </div>
+
+                        <!-- Campo Celular -->
+                        <div class="mb-3">
+                            <label for="celular" class="form-label cyber-label">CELULAR</label>
+                            <input type="tel"
+                                   class="form-control cyber-input"
+                                   id="celular"
+                                   th:field="*{celular}"
+                                   placeholder="Ej: 986783456"
+                                   pattern="[0-9]{9}"
+                                   required>
+                            <div class="form-text text-muted">9 dígitos sin espacios ni guiones</div>
+                        </div>
+
+                        <!-- Campo Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label cyber-label">EMAIL</label>
+                            <input type="email"
+                                   class="form-control cyber-input"
+                                   id="email"
+                                   th:field="*{email}"
+                                   placeholder="Ej: contacto@email.com"
+                                   required>
+                            <div class="form-text text-muted">Correo electrónico válido</div>
+                        </div>
+
+                        <!-- Select País -->
+                        <div class="mb-3">
+                            <label for="pais" class="form-label cyber-label">PAÍS</label>
+                            <select class="form-select cyber-input"
+                                    id="pais"
+                                    th:field="*{pais.idPais}"
+                                    required>
+                                <option value="" disabled selected>Selecciona un país</option>
+                                <option th:each="pais : ${paises}"
+                                        th:value="${pais.idPais}"
+                                        th:text="${pais.nombrePais} + ' (+' + ${pais.codigoCelular} + ')'">
+                                </option>
+                            </select>
+                            <div class="form-text text-muted">Selecciona el país del contacto</div>
+                        </div>
+
+                        <!-- Estado Checkbox (Switch Cyberpunk) -->
+                        <div class="mb-4">
+                            <label class="form-label cyber-label">ESTADO</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input cyber-switch"
+                                       type="checkbox"
+                                       id="estado"
+                                       th:field="*{estado}"
+                                       checked>
+                                <label class="form-check-label" for="estado">
+                                    <span th:if="*{estado}" class="status-active-text">✓ ACTIVO</span>
+                                    <span th:unless="*{estado}" class="status-inactive-text">✗ INACTIVO</span>
+                                </label>
+                            </div>
+                            <div class="form-text text-muted">Define si el contacto estará activo en el sistema</div>
+                        </div>
+
+                        <!-- Botones de Acción -->
+                        <div class="d-flex gap-2 justify-content-end mt-4">
+                            <a th:href="@{/}" class="btn cyber-btn-secondary">
+                                <i class="fas fa-times"></i> CANCELAR
+                            </a>
+                            <button type="submit" class="btn cyber-btn-primary">
+                                <i class="fas fa-save"></i> GUARDAR CONTACTO
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER CYBERPUNK -->
+<div th:replace="~{fragmentos/pie-pagina::pie-pagina-seccion}"/>
+
+<!-- CSS Adicional para Cyberpunk Styles -->
+<link rel="stylesheet" th:href="@{/css/agregar.css}">
+
+<!-- Font Awesome para íconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</body>
+</html>

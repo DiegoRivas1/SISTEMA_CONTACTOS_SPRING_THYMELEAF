@@ -16,7 +16,7 @@ import java.util.List;
 public class Pais {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPais;//id_pais en la base se crea asi
+    private Integer idPais;//id_pais en la base se crea asi
 
     private String nombrePais;
     private String codigoCelular;
