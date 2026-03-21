@@ -21,6 +21,7 @@
     backdrop-filter: blur(10px);
 }
 
+
 /* Labels */
 .cyber-label {
     color: var(--cyber-green);

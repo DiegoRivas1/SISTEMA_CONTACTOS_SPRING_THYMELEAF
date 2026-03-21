@@ -32,4 +32,9 @@ public class ContactoServicio implements IContactoServicio{
     public void eliminarContacto(Contacto contacto) {
         contactoRepositorio.delete(contacto);
     }
+
+    @Override
+    public List<Contacto> buscarPorEstado(Boolean estado) {
+        return contactoRepositorio.findByEstado(estado);
+    }
 }

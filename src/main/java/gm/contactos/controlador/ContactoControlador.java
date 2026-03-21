@@ -32,6 +32,10 @@ public class ContactoControlador {
             System.out.println(contacto.getNombre() + " - " + contacto.getCelularCompleto());
         });
         modelo.put("contactos", contactos);
+
+        //Cantidad de usuarios activos
+        List<Contacto> contactosActivos = contactoServicio.buscarPorEstado(true);
+        modelo.put("contactosActivos", contactosActivos);
         return "index";// index.html
     }
     @GetMapping("/agregar")

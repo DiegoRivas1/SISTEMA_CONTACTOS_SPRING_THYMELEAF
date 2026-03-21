@@ -9,5 +9,5 @@ public interface IContactoServicio {
     public Contacto buscarContactoPorId(Integer idContacto);
     public void guardarContacto(Contacto contacto);
     public void eliminarContacto(Contacto contacto);
-
+    public List<Contacto> buscarPorEstado(Boolean estado);
 }

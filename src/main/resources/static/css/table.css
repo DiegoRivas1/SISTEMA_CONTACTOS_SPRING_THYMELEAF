@@ -194,6 +194,9 @@
 .text-cyber-green {
     color: var(--cyber-green) !important;
 }
+.text-cyber-purple {
+    color: var(--cyber-purple) !important;
+}
 
 /* Efecto neón al pasar por celdas */
 .cyber-table tbody td:hover {
