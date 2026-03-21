@@ -10,7 +10,7 @@
 Sistema web para gestionar contactos desarrollado con **Spring Boot**, **Spring MVC**, **Thymeleaf** y **MySQL**, siguiendo arquitectura MVC con capa de servicios y repositorios.
 ---
 ## Demo
-![Demo](screenshots/sistema_contactos_gif.gif)
+![Demo](screenshots/sistema_contactos_gif_1.gif)
 
 ---
 
