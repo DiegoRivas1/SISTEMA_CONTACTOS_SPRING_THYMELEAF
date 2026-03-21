@@ -20,6 +20,7 @@
                 <th scope="col">EMAIL</th>
                 <th scope="col">ESTADO</th>
                 <th scope="col">PAIS</th>
+                <th scope="col" class="text-center">ACCIONES</th>
               </tr>
               </thead>
               <tbody>
@@ -45,14 +46,25 @@
                   </span>
                 </td>
                 <td th:text="${contacto.pais.nombrePais}"></td>
+                <td class="text-center">
+                  <div class="action-buttons">
+                    <!-- Botón Editar -->
+                    <a th:href="@{/editar/{id}(id=${contacto.idContacto})}"
+                       class="btn-action btn-edit"
+                       title="Editar contacto">
+                      <i class="fas fa-edit"></i>
+                    </a>
+
+                    <!-- Botón Eliminar -->
+                    <a th:href="@{/eliminar/{id}(id=${contacto.idContacto})}"
+                       class="btn-action btn-delete"
+                       title="Eliminar contacto"
+                       onclick="return confirm('¿Estás seguro de eliminar este contacto?')">
+                      <i class="fas fa-trash-alt"></i>
+                    </a>
+                  </div>
+
               </tr>
-              <!-- <tr>
-                  <td>001</td>
-                  <td>JOHN DOE</td>
-                  <td>+51 123 456 789</td>
-                  <td>john.doe@cyber.com</td>
-                  <td><span class="status-badge status-active">ACTIVO</span></td>
-              </tr> -->
 
               </tbody>
             </table>
@@ -62,7 +74,7 @@
           <div class="mt-3 text-end">
                     <span class="text-cyber-green small">
                         <i class="fas fa-circle me-1" style="font-size: 8px;"></i>
-                        REGISTROS ENCONTRADOS: 3
+                        REGISTROS ENCONTRADOS: <span th:text="${contactos.size()}"></span>
                     </span>
           </div>
         </div>

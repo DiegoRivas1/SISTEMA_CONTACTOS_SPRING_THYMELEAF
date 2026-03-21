@@ -18,9 +18,9 @@
         <div class="col-md-8 col-lg-6">
             <div class="card cyber-card">
                 <div class="card-body p-4">
-                    <form th:action="@{/agregar}" th:object="${contacto}" method="post">
-
-                        <!-- Campo Nombre *{nombre} = {contacto.nombre}-->
+                    <form th:action="@{/editar}" th:object="${contacto}" method="post">
+                        <input type="hidden" th:field="*{idContacto}" />
+                        <!-- Campo Nombre -->
                         <div class="mb-3">
                             <label for="nombre" class="form-label cyber-label">NOMBRE</label>
                             <input type="text"
@@ -96,7 +96,7 @@
                                 <i class="fas fa-times"></i> CANCELAR
                             </a>
                             <button type="submit" class="btn cyber-btn-primary">
-                                <i class="fas fa-save"></i> GUARDAR CONTACTO
+                                <i class="fas fa-save"></i> EDITAR CONTACTO
                             </button>
                         </div>
                     </form>

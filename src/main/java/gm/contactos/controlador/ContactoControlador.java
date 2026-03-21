@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class ContactoControlador {
         return "index";// index.html
     }
     @GetMapping("/agregar")
-    public String mostrarAgregar(ModelMap modelo){
+    public String mostrarAgregar(ModelMap modelo){//public String agregarContacto(@ModelAttribute("contacto") Contacto contacto)
         // Crear un objeto Contacto vacío para el formulario
         modelo.addAttribute("contacto", new Contacto());
 
@@ -46,8 +47,25 @@ public class ContactoControlador {
     }
 
     @PostMapping("/agregar")
-    public String agregarContacto(@ModelAttribute("contacto") Contacto contacto){//public String agregarContacto(@ModelAttribute("contacto") Contacto contacto)
+    public String agregarContacto(@ModelAttribute Contacto contacto){
         // El país ya viene con el ID del select, solo guardamos
+        contactoServicio.guardarContacto(contacto);
+        return "redirect:/";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarEditar(ModelMap modelo, @PathVariable(value = "id") int idContacto){
+        Contacto contacto = contactoServicio.buscarContactoPorId(idContacto);
+        modelo.put("contacto", contacto);
+
+        // Cargar la lista de países para el select
+        List<Pais> paises = paisServicio.listarPaises();
+        modelo.addAttribute("paises", paises);
+        return "editar";//editar.html
+    }
+
+    @PostMapping("/editar")
+    public String editarContacto(@ModelAttribute Contacto contacto){
         contactoServicio.guardarContacto(contacto);
         return "redirect:/";
     }
