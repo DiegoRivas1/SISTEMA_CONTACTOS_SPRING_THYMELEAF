@@ -69,4 +69,14 @@ public class ContactoControlador {
         contactoServicio.guardarContacto(contacto);
         return "redirect:/";
     }
+
+    //
+    @GetMapping("/eliminar/{id}")
+    public String eliminarContacto(@PathVariable(value = "id") int idContacto){
+        Contacto contactoEliminar = contactoServicio.buscarContactoPorId(idContacto);
+        contactoServicio.eliminarContacto(contactoEliminar);
+        return "redirect:/";
+    }
+
+
 }
